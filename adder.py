@@ -16,10 +16,7 @@ def Adder(a, b):
         b = r << 1 # 1 bitshift of r to the left
     return a # when b = 0 return result of a
 
- 
-print(Adder(11, 31))
-
-# | oper | 8 | 4 | 2 | 1 |
+ # | oper | 8 | 4 | 2 | 1 |
 # |------|---|---|---|---|
 # | a    | 0 | 1 | 0 | 0 | -> a = 4
 # | b    | 0 | 1 | 0 | 1 | -> b = 5
