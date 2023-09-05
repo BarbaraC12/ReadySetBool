@@ -9,7 +9,7 @@
 #    • ==, !=, <, >, <=, >= (comparison operators)
 #    • ++ or += 1 allowed only to increment index
 
-def Adder(a, b):
+def adder(a, b):
     while (b != 0):
         r = a & b # bitwise AND between a and b
         a = a ^ b # bitwise XOR between a and b

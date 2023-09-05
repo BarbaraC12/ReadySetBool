@@ -47,13 +47,3 @@ def eval_formula(string):
             case _:
                 break
     return verity[0]
-
-
-print(eval_formula("1!"));       # false
-print(eval_formula("10&"));      # false
-print(eval_formula("00^"));      # false
-print(eval_formula("01^"));      # true
-print(eval_formula("10|"));      # true
-print(eval_formula("11>"));      # true
-print(eval_formula("10="));      # false
-print(eval_formula("1011||="));  # true

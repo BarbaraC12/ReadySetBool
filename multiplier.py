@@ -8,9 +8,9 @@
 #    • = (assignment)
 #    • ==, !=, <, >, <=, >= (comparison operators)
 #    • ++ or += 1 allowed only to increment index
-from adder import Adder as add
+from adder import adder as add
 
-def Multiplier(a, b):
+def multiplier(a, b):
     r = 0                   # in case of multiply by 0 r is always 0
     while (b > 0):
         if (b & 1):         # if b !% 2 r = a + r
@@ -19,9 +19,6 @@ def Multiplier(a, b):
         b = b >> 1          # 1 bitshift of b to the right
     return r
 
- 
-print(Multiplier(21, 2))
-print(Multiplier(1, 42))
 
 # | oper | 16 | 8 | 4 | 2 | 1 |
 # |------|----|---|---|---|---|
