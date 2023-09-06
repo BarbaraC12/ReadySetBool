@@ -9,41 +9,32 @@
 #    • ==, !=, <, >, <=, >= (comparison operators)
 #    • ++ or += 1 allowed only to increment index
 
-def eval_formula(string):
-    verity = []
-    for c in string:
+def eval_formula(formula: str) -> bool:
+    truth = []
+    for c in formula:
         match c:
             case '1': # True
-                verity.append(True)
+                truth.append(True)
             case '0': # False
-                verity.append(False)
+                truth.append(False)
             case '!': # Negation
-                verity[-1] = False if verity[-1] is True else True
+                tmp = truth.pop()
+                truth.append(not tmp)
             case '&': # conjonction
-                r = True if verity[-1] == verity[-2] else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] &= tmp
             case '|': # disjonction
-                r = True if verity[-1] or verity[-2] is True else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] |= tmp
             case '^': # exclusive disjonction
-                r = False if verity[-1] == verity[-2] else True
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] ^= tmp
             case '>': # material contition
-                r = True if verity[-1] == verity[-2] or verity[-1] is True else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] >= tmp
             case '=': # logical equivalence
-                r = True if verity[-1] == verity[-2] else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] = tmp
             case _:
                 break
-    return verity[0]
+    return truth[0]

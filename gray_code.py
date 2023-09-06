@@ -10,7 +10,7 @@
 #    • ==, !=, <, >, <=, >= (comparison operators)
 #    • ++ or += 1 allowed only to increment index
 
-def gray_code(a):
+def gray_code(a: int) -> int:
     r = a >> 1
     a ^= r
     return a

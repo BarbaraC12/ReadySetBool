@@ -10,7 +10,7 @@
 #    • ++ or += 1 allowed only to increment index
 from adder import adder as add
 
-def multiplier(a, b):
+def multiplier(a: int, b: int) -> int:
     r = 0                   # in case of multiply by 0 r is always 0
     while (b > 0):
         if (b & 1):         # if b !% 2 r = a + r

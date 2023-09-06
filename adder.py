@@ -9,14 +9,14 @@
 #    • ==, !=, <, >, <=, >= (comparison operators)
 #    • ++ or += 1 allowed only to increment index
 
-def adder(a, b):
+def adder(a: int, b: int) -> int:
     while (b != 0):
         r = a & b # bitwise AND between a and b
         a = a ^ b # bitwise XOR between a and b
         b = r << 1 # 1 bitshift of r to the left
     return a # when b = 0 return result of a
 
- # | oper | 8 | 4 | 2 | 1 |
+# | oper | 8 | 4 | 2 | 1 |
 # |------|---|---|---|---|
 # | a    | 0 | 1 | 0 | 0 | -> a = 4
 # | b    | 0 | 1 | 0 | 1 | -> b = 5
