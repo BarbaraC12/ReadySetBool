@@ -9,37 +9,29 @@
 #    • ==, !=, <, >, <=, >= (comparison operators)
 #    • ++ or += 1 allowed only to increment index
 
-def print_truth_table(formula: str) -> bool:
-    verity = []
+def print_truth_table(formula: str):
+    truth = []
     for c in formula:
         match c:
             case '!': # Negation
-                verity[-1] = False if verity[-1] is True else True
+                tmp = truth.pop()
+                truth.append(not tmp)
             case '&': # conjonction
-                r = True if verity[-1] == verity[-2] else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] &= tmp
             case '|': # disjonction
-                r = True if verity[-1] or verity[-2] is True else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] |= tmp
             case '^': # exclusive disjonction
-                r = False if verity[-1] == verity[-2] else True
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] ^= tmp
             case '>': # material contition
-                r = True if verity[-1] == verity[-2] or verity[-1] is True else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] >= tmp
             case '=': # logical equivalence
-                r = True if verity[-1] == verity[-2] else False
-                verity.pop()
-                verity.pop()
-                verity.append(r)
+                tmp = truth.pop()
+                truth[-1] = tmp
             case _:
-                verity.append(c)
-    return verity[0]
+                truth.append(c) # hum don't work on str i need more info
+    return truth[0]
+

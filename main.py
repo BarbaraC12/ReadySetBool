@@ -35,7 +35,7 @@ print(eval_formula("11>"));      # true
 print(eval_formula("10="));      # false
 print(eval_formula("1011||="));  # true
 
-# print(print_truth_table("AB&C|"));
+print(print_truth_table("AB&C|"));
 # | A | B | C | = |$
 # |---|---|---|---|$
 # | 0 | 0 | 0 | 0 |$
