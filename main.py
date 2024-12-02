@@ -3,6 +3,7 @@ from multiplier import multiplier
 from gray_code import gray_code
 from boolean_eval import eval_formula
 from truth_table import print_truth_table
+from negation_normal_form import negation_normal_form
 
 print("********* ADDER *********")
 print(adder(21, 2))
@@ -46,13 +47,10 @@ print(print_truth_table("AB&C|"));
 print(print_truth_table("A&B&C|"));
 print(print_truth_table("ABCDE"));
 
-# | A | B | C | = |$
-# |---|---|---|---|$
-# | 0 | 0 | 0 | 0 |$
-# | 0 | 0 | 1 | 1 |$
-# | 0 | 1 | 0 | 0 |$
-# | 0 | 1 | 1 | 1 |$
-# | 1 | 0 | 0 | 0 |$
-# | 1 | 0 | 1 | 1 |$
-# | 1 | 1 | 0 | 1 |$
-# | 1 | 1 | 1 | 1 |$
+print("****** NEGATION NORMAL FORM ******")
+print(negation_normal_form("AB&!"));   # A!B!|
+print(negation_normal_form("AB|!"));   # A!B!&
+print(negation_normal_form("AB>"));    # A!B|
+print(negation_normal_form("AB="));    # AB&A!B!&|
+print(negation_normal_form("AB|C&!")); # A!B!&C!|
+
