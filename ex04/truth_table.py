@@ -11,7 +11,7 @@
 
 def is_valid_formula(formula):
     # Vérifier la syntaxe de la formule
-    valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZ&|^>=')
+    valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZ&|^>=!')
     stack = []
     for char in formula:
         if char.isalpha():
@@ -22,6 +22,10 @@ def is_valid_formula(formula):
                     return False
                 stack.pop()
                 stack.pop()
+            elif char == '!':
+                if len(stack) < 1:
+                    return false
+                stack.pop()
             stack.append('x')
         else:
             return False
@@ -29,26 +33,38 @@ def is_valid_formula(formula):
 
 def evaluate_formula(formula, values):
     stack = []
-    for char in formula:
-        if char.isalpha():
-            stack.append(values[char])
-        elif char == '&':
-            stack.append(stack.pop() & stack.pop())
-        elif char == '|':
-            stack.append(stack.pop() | stack.pop())
-        elif char == '^':
-            stack.append(stack.pop() ^ stack.pop())
-        elif char == '>':
-            b = stack.pop()
-            a = stack.pop()
-            stack.append((not a) | b)
-        elif char == '=':
-            stack.pop()
+        for char in formula:
+            if char.isalpha():  # Variable
+                stack.append(values[char])
+            elif char == '&':  # Conjonction (AND)
+                b = stack.pop()
+                a = stack.pop()
+                stack.append(a & b)
+            elif char == '|':  # Disjonction (OR)
+                b = stack.pop()
+                a = stack.pop()
+                stack.append(a | b)
+            elif char == '^':  # Disjonction exclusive (XOR)
+                b = stack.pop()
+                a = stack.pop()
+                stack.append(a ^ b)
+            elif char == '!':  # Négation (NOT)
+                a = stack.pop()
+                stack.append(not a)
+            elif char == '>':  # Implication
+                b = stack.pop()
+                a = stack.pop()
+                stack.append((not a) | b)
+            elif char == '=':  # Équivalence
+                b = stack.pop()
+                a = stack.pop()
+                stack.append(a == b)
     return stack.pop()
  
 def print_truth_table(formula: str):
     if not is_valid_formula(formula):
         return("Formule invalide.")
+        
     # Liste des variables distinctes dans la formule
     variables = sorted(set([char for char in formula if char.isalpha()]))
 
