@@ -53,4 +53,20 @@ print(negation_normal_form("AB|!"));   # A!B!&
 print(negation_normal_form("AB>"));    # A!B|
 print(negation_normal_form("AB="));    # AB&A!B!&|
 print(negation_normal_form("AB|C&!")); # A!B!&C!|
+	
+print("****** CONJONCTIVE NORMAL FORM ******")
+print(conjunctive_normal_form("AB&!"));     #A!B!|
+print(conjunctive_normal_form("AB|!"));     #A!B!&
+print(conjunctive_normal_form("AB|C&"));    #AB|C&
+print(conjunctive_normal_form("AB|C|D|"));  #ABCD|||
+print(conjunctive_normal_form("AB&C&D&"));  #ABCD&&&
+print(conjunctive_normal_form("AB&!C!|"));  #A!B!C!||
+print(conjunctive_normal_form("AB|!C!&"));  #A!B!C!&&
+
+print("********** SAT **********")
+print(sat("AB|"));   # true
+print(sat("AB&"));   # true
+print(sat("AA!&"));  # false
+print(sat("AA^"));   # false
+
 
