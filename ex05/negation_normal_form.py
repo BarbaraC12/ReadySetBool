@@ -8,6 +8,7 @@
 #    • ++ or += 1 allowed only to increment index
 
 def negation_normal_form(formula: str) -> str:
+    """Conversion en NNF"""
     # Stockage des sous-formules transformées
     stack = []
 
