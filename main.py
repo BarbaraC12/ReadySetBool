@@ -4,6 +4,8 @@ from gray_code import gray_code
 from boolean_eval import eval_formula
 from truth_table import print_truth_table
 from negation_normal_form import negation_normal_form
+from conjonctive_normal_form import conjunctive_normal_form
+from sat import sat
 
 print("********* ADDER *********")
 print(adder(21, 2))
