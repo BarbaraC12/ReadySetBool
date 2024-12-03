@@ -10,7 +10,7 @@
 #    • ++ or += 1 allowed only to increment index
 
 def is_valid_formula(formula):
-    # Vérifier la syntaxe de la formule
+    """Vérifie la syntaxe de la formule"""
     valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZ&|^>=!')
     stack = []
     for char in formula:
@@ -32,6 +32,7 @@ def is_valid_formula(formula):
     return len(stack) == 1
 
 def evaluate_formula(formula, values):
+    """Evalue la formule de la table de vérité"""
     stack = []
         for char in formula:
             if char.isalpha():  # Variable
@@ -62,6 +63,7 @@ def evaluate_formula(formula, values):
     return stack.pop()
  
 def print_truth_table(formula: str):
+    """Imprime la table de vérité formalisé"""
     if not is_valid_formula(formula):
         return("Formule invalide.")
         
