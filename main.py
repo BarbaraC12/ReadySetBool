@@ -6,6 +6,7 @@ from truth_table import print_truth_table
 from negation_normal_form import negation_normal_form
 from conjonctive_normal_form import conjunctive_normal_form
 from sat import sat
+from powerset import powerset
 
 print("********* ADDER *********")
 print(adder(21, 2))
@@ -71,4 +72,8 @@ print(sat("AB&"));   # true
 print(sat("AA!&"));  # false
 print(sat("AA^"));   # false
 
+print("********** POWERSET **********")
+print(powerset([1, 2, 3]));  # [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
+print(powerset([]));         # [[]]
+print(powerset([5]));        # [[], [5]]
 
