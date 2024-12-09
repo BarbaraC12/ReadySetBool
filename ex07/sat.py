@@ -20,6 +20,7 @@ def evaluate_formula(formula, values):
             stack.append(a != b)
     return stack.pop()
 
+
 def sat(formula: str) -> bool:
     """Vérifie que l'équation est satifaisable Opti"""
     variables = sorted(set(char for char in formula if char.isalpha()))
@@ -34,4 +35,3 @@ def sat(formula: str) -> bool:
             return True  # Retourne dés que c'est possible pour Opti
 
     return False
-  

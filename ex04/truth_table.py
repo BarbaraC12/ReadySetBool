@@ -31,35 +31,36 @@ def is_valid_formula(formula):
             return False
     return len(stack) == 1
 
+
 def evaluate_formula(formula, values):
     """Evalue la formule de la table de vérité"""
     stack = []
-        for char in formula:
-            if char.isalpha():  # Variable
-                stack.append(values[char])
-            elif char == '&':  # Conjonction (AND)
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(a & b)
-            elif char == '|':  # Disjonction (OR)
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(a | b)
-            elif char == '^':  # Disjonction exclusive (XOR)
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(a ^ b)
-            elif char == '!':  # Négation (NOT)
-                a = stack.pop()
-                stack.append(not a)
-            elif char == '>':  # Implication
-                b = stack.pop()
-                a = stack.pop()
-                stack.append((not a) | b)
-            elif char == '=':  # Équivalence
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(a == b)
+    for char in formula:
+        if char.isalpha():  # Variable
+            stack.append(values[char])
+        elif char == '&':  # Conjonction (AND)
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(a & b)
+        elif char == '|':  # Disjonction (OR)
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(a | b)
+        elif char == '^':  # Disjonction exclusive (XOR)
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(a ^ b)
+        elif char == '!':  # Négation (NOT)
+            a = stack.pop()
+            stack.append(not a)
+        elif char == '>':  # Implication
+            b = stack.pop()
+            a = stack.pop()
+            stack.append((not a) | b)
+        elif char == '=':  # Équivalence
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(a == b)
     return stack.pop()
  
 def print_truth_table(formula: str):

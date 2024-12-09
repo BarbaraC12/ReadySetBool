@@ -1,5 +1,5 @@
-# Program who take a string to evaluate veracity without using arithmetic operator
-# Allowed operator: 
+# Program who take a str to evaluate verity without using arithmetic operator
+# Allowed operator:
 #    • & (bitwise AND)
 #    • | (bitwise OR)
 #    • ^ (bitwise XOR)
@@ -13,28 +13,28 @@ def eval_formula(formula: str) -> bool:
     truth = []
     for c in formula:
         match c:
-            case '1': # True
+            case '1':  # True
                 truth.append(True)
-            case '0': # False
+            case '0':  # False
                 truth.append(False)
-            case '!': # Negation
+            case '!':  # Negation
                 tmp = truth.pop()
                 truth.append(not tmp)
-            case '&': # conjonction
+            case '&':  # conjonction
                 tmp = truth.pop()
                 truth[-1] &= tmp
-            case '|': # disjonction
+            case '|':  # disjonction
                 tmp = truth.pop()
                 truth[-1] |= tmp
-            case '^': # exclusive disjonction
+            case '^':  # exclusive disjonction
                 tmp = truth.pop()
                 truth[-1] ^= tmp
-            case '>': # material contition
+            case '>':  # material contition
                 tmp = truth.pop()
                 truth[-1] >= tmp
-            case '=': # logical equivalence
+            case '=':  # logical equivalence
                 tmp = truth.pop()
                 truth[-1] = tmp
             case _:
-                break
+                return False
     return truth[0]

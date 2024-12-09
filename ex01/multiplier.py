@@ -1,5 +1,5 @@
 # Program to miltiplier two numbers without using arithmetic operator
-# Allowed operator: 
+# Allowed operator:
 #    • & (bitwise AND)
 #    • | (bitwise OR)
 #    • ^ (bitwise XOR)
@@ -8,7 +8,9 @@
 #    • = (assignment)
 #    • ==, !=, <, >, <=, >= (comparison operators)
 #    • ++ or += 1 allowed only to increment index
+
 from adder import adder as add
+
 
 def multiplier(a: int, b: int) -> int:
     r = 0                   # in case of multiply by 0 r is always 0
@@ -18,7 +20,6 @@ def multiplier(a: int, b: int) -> int:
         a = a << 1          # 1 bitshift of a to the left
         b = b >> 1          # 1 bitshift of b to the right
     return r
-
 
 # | oper | 16 | 8 | 4 | 2 | 1 |
 # |------|----|---|---|---|---|
@@ -30,4 +31,3 @@ def multiplier(a: int, b: int) -> int:
 # | & b1 |  0 | 1 | 1 | 0 | 0 | -> r = 12
 # | << a |  1 | 0 | 0 | 0 | 1 | -> a = 16
 # | >> r |  0 | 0 | 0 | 0 | 0 | -> b = 0 --> QUIT r = 12
-

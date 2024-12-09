@@ -1,6 +1,6 @@
 # Program to convert a number to gray code without using arithmetic operator
-# https://www.youtube.com/watch?v=s-abLOm2MXk What is gray code 
-# Allowed operator: 
+# https://www.youtube.com/watch?v=s-abLOm2MXk What is gray code
+# Allowed operator:
 #    • & (bitwise AND)
 #    • | (bitwise OR)
 #    • ^ (bitwise XOR)

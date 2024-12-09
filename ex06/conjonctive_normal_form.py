@@ -1,5 +1,5 @@
-# Program who take a string to evaluate veracity without using arithmetic operator
-# Allowed operator: 
+# Program who take a str to change to conj without using arithmetic operator
+# Allowed operator:
 #    • & (bitwise AND)
 #    • | (bitwise OR)
 #    • ! (negation operators)
@@ -13,26 +13,20 @@ def negation_normal_form_S(formula: str) -> str:
         if char.isalpha():  # Variables
             stack.append(char)
         elif char in operators:
-            if char == '!':
-                operand = stack.pop()
-                if operand.endswith('&'):  # !(A & B) -> A! B! |
-                    b = stack.pop()
-                    a = stack.pop()
+            if char == '&':  # CONJONCTION
+                b = stack.pop()
+                a = stack.pop()
+                if formula.endswith('!'):
                     stack.append(f"{a}!{b}!|")
-                elif operand.endswith('|'):  # !(A | B) -> A! B! &
-                    b = stack.pop()
-                    a = stack.pop()
+                else:
+                    stack.append(f"{a}{b}&")
+            elif char == '|':  # DISJONCTION
+                b = stack.pop()
+                a = stack.pop()
+                if formula.endswith('!'):
                     stack.append(f"{a}!{b}!&")
                 else:
-                    stack.append(f"{operand}!")
-            elif char == '&':
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(f"{a}{b}&")
-            elif char == '|':
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(f"{a}{b}|")
+                    stack.append(f"{a}{b}|")
     return stack.pop()
 
 
@@ -46,9 +40,9 @@ def distribute_and_over_or(a: str, b: str) -> str:
             if char.isalpha():
                 stack.append(char)
             elif char == '&':
-                r = stack.pop()
-                l = stack.pop()
-                components.append(f"{l}{r}")
+                d = stack.pop()
+                e = stack.pop()
+                components.append(f"{e}{d}")
             else:
                 stack.append(char)
         distributed = [f"{a}{comp}|" for comp in components]
@@ -80,5 +74,5 @@ def conjunctive_normal_form(formula: str) -> str:
                 stack.append(distribute_and_over_or(a, b))
             else:
                 stack.append(f"{a}{b}|")
-   
+
     return stack.pop()

@@ -1,0 +1,15 @@
+from gray_code import gray_code
+
+print("********* GRAY CODE *********")
+print("0  => get: ", gray_code(0), " expected:  # 0 ")
+print("1  => get: ", gray_code(1), " expected:  # 1 ")
+print("2  => get: ", gray_code(2), " expected:  # 3 ")
+print("3  => get: ", gray_code(3), " expected:  # 2 ")
+print("4  => get: ", gray_code(4), " expected:  # 6 ")
+print("5  => get: ", gray_code(5), " expected:  # 7 ")
+print("6  => get: ", gray_code(6), " expected:  # 5 ")
+print("7  => get: ", gray_code(7), " expected:  # 4 ")
+print("8  => get: ", gray_code(8), "expected:  # 12 ")
+print("21 => get: ", gray_code(21))
+print("42 => get: ", gray_code(42))
+print("43 => get: ", gray_code(43))
